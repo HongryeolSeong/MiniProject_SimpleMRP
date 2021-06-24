@@ -5,14 +5,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MRPApp.View.Setting
+namespace MRPApp.View.Schedule
 {
     /// <summary>
     /// MyAccount.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SettingList : Page
+    public partial class ScheduleList : Page
     {
-        public SettingList()
+        public ScheduleList()
         {
             InitializeComponent();
         }
