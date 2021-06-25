@@ -13,7 +13,7 @@ namespace MRPApp.Logic
         // Setting테이블에서 데이터 가져오기
         public static List<Settings> GetSettings()
         {
-            List<Model.Settings> settings;
+            List<Model.Settings> list;
 
             // 이렇게 해도 됨
             //var ctx = new MRPEntities();
@@ -21,10 +21,10 @@ namespace MRPApp.Logic
 
             using (var ctx = new MRPEntities())
             {
-                settings = ctx.Settings.ToList();
+                list = ctx.Settings.ToList();
             }
 
-            return settings;
+            return list;
         }
 
         internal static int SetSettings(Settings item)
@@ -43,6 +43,31 @@ namespace MRPApp.Logic
                 var obj = ctx.Settings.Find(item.BasicCode);
                 ctx.Settings.Remove(obj);      // DELETE
                 return ctx.SaveChanges();
+            }
+        }
+
+        internal static List<Schedules> GetSchedules()
+        {
+            List<Model.Schedules> list;
+
+            // 이렇게 해도 됨
+            //var ctx = new MRPEntities();
+            //settings = ctx.Settings.ToList();
+
+            using (var ctx = new MRPEntities())
+            {
+                list = ctx.Schedules.ToList();
+            }
+
+            return list;
+        }
+
+        internal static int SetSchedule(Schedules item)
+        {
+            using (var ctx = new MRPEntities())
+            {
+                ctx.Schedules.AddOrUpdate(item);    // INSERT or UPDATE
+                return ctx.SaveChanges();           // COMMIT
             }
         }
     }

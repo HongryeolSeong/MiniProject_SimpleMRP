@@ -21,13 +21,13 @@ namespace MRPApp.Test
             Assert.AreNotEqual(expectVal, realVal); // 값이 같으면 Pass, 다르면 Fail
         }
 
-        public void IsCodeSearched()
+        /*public void IsCodeSearched()
         {
             var expectVal = 2;
             var inputCode = "설비";
 
             var realal = Logic.DataAccess.GetSettings().Where(d => d.BasicCode.Contains(inputCode)).FirstOrDefault();
             Assert.AreNotEqual(expectVal, realVal);
-        }
+        }*/
     }
 }
