@@ -19,6 +19,8 @@ using MRPApp.View.Account;
 using MRPApp.View.Store;
 using MRPApp.View.Setting;
 using MRPApp.View.Schedule;
+using MRPApp.View.Process;
+using System.Configuration;
 
 namespace MRPApp
 {
@@ -41,6 +43,18 @@ namespace MRPApp
         {
             /*if (Commons.LOGINED_USER != null)
                 BtnLoginedId.Content = $"{Commons.LOGINED_USER.UserEmail} ({Commons.LOGINED_USER.UserName})";*/
+
+            //var plantCode = ConfigurationManager.AppSettings["PlantCode"];
+            Commons.PLANTCODE = ConfigurationManager.AppSettings["PlantCode"];
+            try
+            {
+                var plantName = Logic.DataAccess.GetSettings().Where(c => c.BasicCode.Equals(Commons.PLANTCODE)).FirstOrDefault().CodeName;
+                BtnPlantName.Content = plantName;
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 : {ex}");
+            }
         }
 
         // 종료 버튼
@@ -110,6 +124,19 @@ namespace MRPApp
             try
             {
                 ActiveControl.Content = new ScheduleList();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnSchedule_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
+        }
+
+        private void BtnMonitoring_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new ProcessView();
             }
             catch (Exception ex)
             {
