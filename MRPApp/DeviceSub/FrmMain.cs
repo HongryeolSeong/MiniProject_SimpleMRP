@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,7 +65,7 @@ namespace DeviceSub
         private void Timer_Tick(object sender, EventArgs e)
         {
             LblResult.Text = sw.Elapsed.Seconds.ToString();
-            if (sw.Elapsed.Seconds >= 3)
+            if (sw.Elapsed.Seconds >= 2)
             {
                 sw.Stop();
                 sw.Reset();
@@ -87,13 +88,12 @@ namespace DeviceSub
                 using (var conn = new SqlConnection(connectionString))
                 {
                     var PrcResult = correctData["PRC_MSG"] == "OK" ? 1 : 0;
-                    string strUpQry = $"UPDATE Process_DEV " +
-                                      $"   SET PrcEndTime = '{DateTime.Now.ToString("HH:mm:ss")}' " +
-                                      $"     , PrcResult = '{PrcResult}' " +
+                    string strUpQry = $"UPDATE Process " +
+                                      $"   SET PrcResult = '{PrcResult}' " +
                                       $"     , ModDate = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' " +
                                       $"     , ModID = '{"SYS"}' " +
                                       $" WHERE PrcIdx = " +
-                                      $" (SELECT TOP 1 PrcIdx FROM Process_DEV ORDER BY PrcIdx DESC)";
+                                      $" (SELECT TOP 1 PrcIdx FROM Process ORDER BY PrcIdx DESC)";
 
                     try
                     {
@@ -111,7 +111,7 @@ namespace DeviceSub
                 }
             }
 
-            iotData.Clear();
+            iotData.Clear(); // 데이터 모두 삭제
         }
 
         private void Client_MqttMsgPublishReceived(object sender, uPLibrary.Networking.M2Mqtt.Messages.MqttMsgPublishEventArgs e)

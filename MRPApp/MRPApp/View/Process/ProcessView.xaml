@@ -66,7 +66,7 @@
                 <Image x:Name="Gear2" HorizontalAlignment="Left" VerticalAlignment="top" 
                        Height="100" Width="100"
                        Source="/MRPApp;component/Resources/gear.png" Canvas.Left="567" Canvas.Top="267" />
-                <Image Width="100" Height="100" 
+                <Image x:Name="Sensor" Width="100" Height="100" 
                        Source="/MRPApp;component/Resources/sensor.png" Canvas.Left="512" Canvas.Top="93"/>
                 <Image Source="/MRPApp;component/Resources/belt.png" Canvas.Left="81" Canvas.Top="255"/>
                 <Rectangle x:Name="Product" Height="50" Width="50" Canvas.Left="142" Canvas.Top="205"

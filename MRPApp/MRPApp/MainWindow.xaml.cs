@@ -41,11 +41,8 @@ namespace MRPApp
 
         private void MetroWindow_Activated(object sender, EventArgs e)
         {
-            /*if (Commons.LOGINED_USER != null)
-                BtnLoginedId.Content = $"{Commons.LOGINED_USER.UserEmail} ({Commons.LOGINED_USER.UserName})";*/
-
-            //var plantCode = ConfigurationManager.AppSettings["PlantCode"];
             Commons.PLANTCODE = ConfigurationManager.AppSettings["PlantCode"];
+            Commons.FACILITYID = ConfigurationManager.AppSettings["FacilityID"];
             try
             {
                 var plantName = Logic.DataAccess.GetSettings().Where(c => c.BasicCode.Equals(Commons.PLANTCODE)).FirstOrDefault().CodeName;
