@@ -175,7 +175,8 @@ namespace DeviceSub
         // RtbSubscr.AppendTest() 대체
         private void UpdateText(string message) // 대리자와 파라미터가 같아야한다.
         {
-            if (RtbSubscr.InvokeRequired)
+            // RtbSubscr -> UI스레드
+            if (RtbSubscr.InvokeRequired)   // 외부 입력이 있는경우 콜백으로 처리하라
             {
                 UpdateTextCallback callback = new UpdateTextCallback(UpdateText);
                 this.Invoke(callback, new object[] { message });
