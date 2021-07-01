@@ -34,3 +34,5 @@ SELECT smr.SchIdx, smr.PrcDate, SUM(smr.PrcOK) AS PrcOkAmount, SUM(smr.PrcFail) 
 				   GROUP BY smr.SchIdx, smr.PrcDate
   ) AS prc
     ON sch.SchIdx = prc.SchIdx
+ WHERE sch.PlantCode = 'PC010002'
+   AND prc.PrcDate BETWEEN '2021-06-29' AND '2021-06-30'
