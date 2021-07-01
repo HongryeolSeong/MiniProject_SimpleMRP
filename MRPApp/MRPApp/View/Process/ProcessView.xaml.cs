@@ -144,8 +144,8 @@ namespace MRPApp.View.Process
 
             LblPrcOkAmount.Content = $"{prcOKAmount} 개";
             LblPrcFailAmount.Content = $"{prcFailAmount} 개";
-            LblPrcOkRate.Content = $"{prcOkRate} %";
-            LblPrcFailRate.Content = $"{prcFailRate} %";
+            LblPrcOkRate.Content = $"{prcOkRate.ToString("#.##")} %";
+            LblPrcFailRate.Content = $"{prcFailRate.ToString("#.##")} %";
         }
 
         Dictionary<string, string> currentData = new Dictionary<string, string>();
@@ -283,8 +283,13 @@ namespace MRPApp.View.Process
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             // 자원해제
-            if (client.IsConnected) client.Disconnect();
-            timer.Dispose();
+            //if (client.IsConnected) client.Disconnect();
+            //timer.Dispose();
+            if (client != null) client.Disconnect();
+            if (timer != null)
+            {
+                timer.Dispose();
+            }
         }
     }
 }

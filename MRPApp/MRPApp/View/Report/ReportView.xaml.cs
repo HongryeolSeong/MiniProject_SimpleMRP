@@ -19,12 +19,35 @@ namespace MRPApp.View.Report
             try
             {
                 InitControls();
+                DisplayChart();
             }
             catch (Exception ex)
             {
                 Commons.LOGGER.Error($"예외발생 ReportView Loaded : {ex}");
                 throw ex;
             }
+        }
+
+        private void DisplayChart()
+        {
+            double[] ys1 = new double[] { 10.4, 34.6, 22.1, 15.4, 40.0 };
+            double[] ys2 = new double[] { 9.7, 10.2, 6.4, 15.4, 70.2 };
+
+            var series1 = new LiveCharts.Wpf.ColumnSeries
+            {
+                Title = "First Val",
+                Values = new LiveCharts.ChartValues<double>(ys1)
+            };
+            var series2 = new LiveCharts.Wpf.ColumnSeries
+            {
+                Title = "Second Val",
+                Values = new LiveCharts.ChartValues<double>(ys2)
+            };
+
+            // 차트할당
+            ChtReport.Series.Clear();
+            ChtReport.Series.Add(series1);
+            ChtReport.Series.Add(series2);
         }
 
         private void InitControls()
