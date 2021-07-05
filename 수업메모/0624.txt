@@ -1,0 +1,37 @@
+// vnc속 비쥬얼 코드에서의 디버깅 = 비쥬얼 스튜디오랑 동일
+
+// MRPApp 작업
+Model -> 데이터/ado.net 엔터티 데이터 모델/MRPModel 추가
+중요한 데이터 연결 문자열 포함
+테이블 - Process, Schedules, Settings 추가
+
+// MRPApp - Settings 레이아웃 작업
++ DataGrid 바인딩 변경
+MRPApp.Logic.DataAccess 에서 GetSettings()함수 생성
+
+// 셀 선택시 이벤트 생성
+SelectedCellsChanged="GrdData_SelectedCellsChanged"
+
+// 수정 버튼 작업
+MRPApp.Logic.DataAccess 에서 SetSettings()함수 생성
+수정하는란 비워주기위해 ClearInput() 생성
+입력 버튼 비슷하게 작업	
+
+// 삭제 버튼 추가
+MRPApp.Logic.DataAccess 에서 DelSettings()함수 생성
+
+// 검색 버튼 작성
+엔터 누를시에도 검색 가능하게
+
+// 빈 값으로 추가 및 수정 안되게 작업
+IsValidInputs()
+
+// 산출물 작성-단위테스트
+테스터는 개발자가 아니므로 테스트 절차를 상세히 적도록 한다.
+
+// 단위프로젝트 수행
+MRPApp.Test
+-> 해당 프로젝트인 MRPApp과 동일한 참조가 구성되어있어야 한다.
+
+// MRPApp 작업
+/Schedule/ScheduleList.xaml 생성

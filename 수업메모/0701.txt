@@ -1,0 +1,23 @@
+// 성공/실패율 소숫점 처리
+.ToString("#.##")
+
+// 리포트뷰탭 작업
+차트구현
+oxyplot 삭제 및 livecharts.wpf 설치
+DisplayChart() 생성
+
+// 리포트탭 <-> DB(entityframe x)
+Schedules와 Process 테이블 서브쿼리를 통한 조인
+report.sql
+
+// 리포트뷰 - BtnSearch_Click
+dataacces - GetReportDatas() 생성
+app.config에 connectionStrings 추가
+model/report.cs(가상 테이블) 추가
+DisplayChart(searchResult); 수정
+IsValidInputs()
+
+// DB -> github
+태스크/스크립트 생성
+스크립팅할 데이터 형식 -> 스키마 및 데이터
+MRP_totalSchema.sql

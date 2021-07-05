@@ -1,0 +1,11 @@
+// MRPApp 일정 탭 작업
+mah앱-컨트롤 워터마크
+--> mah:TextBoxHelper.Watermark="공정일선택"
+
+첫 화면에서 데이터 로드 처리 LoadGridData(), LoadControlData()
+셀 선택 이벤트 처리 GrdData_SelectedCellsChanged()
+
+BtnInsert_Click() 작업
+IsValidInputs() 수정
+
+검색 버튼 작업

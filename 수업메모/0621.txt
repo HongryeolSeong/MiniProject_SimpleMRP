@@ -1,0 +1,41 @@
+ERP: 프로세스에 관한 계획 데이터 및 결과 데이터
+공정관리시스템: ERP에서 계획 데이터를 받은 후
+			공정 처리 거친 다음
+			ERP에 결과 데이터 전송
+			
+// 테이블 기술서를 토대로 DB설계
+MRP DB 생성
+테이블 생성 - Settings, Schedules, Process
+다이어그램에서 설명탭 추가 가능(하지만 기술서 있기 때문에 굳이 필요x)
+
+// SMS -> MRP
+control + shift + h로 전체 이름 바꾸기
+WpfSMSApp -> MRPApp
+
+// 앱 설계서 토대로 wpf구현
+User 삭제 후 Setting 폴더 생성 및 SettingList.xaml 생성
+버튼 삭제 및 수정
+
+// 회로 구성
+Color Sensor(TCS3200)
+
+// visual code 설치
+파이선 업데이트
+>>> sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+
+파이선 사용하기위한 pip 업데이트
+>>> pip install --upgrade pip
+
+구글 서칭 -> linux visual studio code install
+https://webnautes.tistory.com/1197
+
+>>> sudo apt-get install curl
+>>> sudo sh -c 'curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg'
+>>> sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+>>> sudo apt update
+>>> sudo apt install code
+
+확장 - 한글언어팩 설치, 파이선 설치
+
+/pi/machine01/test.py
+파이선은 탭으로 코드 블럭을 대체

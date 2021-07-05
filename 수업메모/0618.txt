@@ -1,0 +1,12 @@
+// 라즈베리파이 솔팅 머신(로직만)
+https://youneedawiki.com/app/page/13KWTckhTViegM3FObAwa-V2JkxTVPbpoE8Y8KRn4v-s?p=1wsnKDXabPNexd77rGhjdBLAgdFtMhF5s
+
+// 카카오 오븐 활용한 UI설계
+https://ovenapp.io/
+
+// 산출물 작성
+일정계획관리
+요구사항정의
+ToBe 프로세스
+Application 설계서
+테이블 기술서

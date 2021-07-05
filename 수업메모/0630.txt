@@ -1,0 +1,24 @@
+// ProcessView탭 작업 계속
+
+// UI스레드와 wpf <-> MQTT 통신 스레드의 충돌 해결
+Dispatcher.Invoke() 사용
+- 해당 스레드(UI 스레드)가 작업이 불가하니 대리자를 통해 대신 실행한다.
+
+Client_MqttMsgPublishReceived, StartSensorAnimation() 수정
+
+상자색 변화 -> Timer_Elapsed 수정
+
+// 공정 결과 표시
+UpdateDate() 생성후 Timer_Elapsed 넣을 것
+
+// 상자 빨or초로 바뀐 후 초기화
+StartAnimation() 처음에 fill 색상 그레이로
+
+// 프로그램 종료시 자원해제
+unloaded 이벤트 생성
+
+// ReportView탭 작업
+oxyplot 참조 설치
+ReportView.xaml에서 xmlns:oxy="http://oxyplot.org/wpf"추가
+
+InitControls()

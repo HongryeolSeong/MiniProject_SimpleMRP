@@ -1,0 +1,35 @@
+// StartAnimation() 생성
+
+// 오늘 작업할 단계
+4. 시작버튼 클릭시 새 공정 생성, DB에 입력
+   공정코드 : PRC20210628001 (PRC+yyyy+MM+dd+NNN)
+
+// App.config에 FacilityID 추가
+commons에 설비아이디 변수 생성
+
+// InsertProcessData() 생성
+
+// GetProcessCodeFromDB() 생성
+DataAccess에 GetProcesses(), SetProcess 만듦
+
+*만약 DB 컬럼명 수정시 스튜디오에서 수정x
+-> 스튜디오 edmx 완전 삭제후 다시 불러올 것
+
+// DeviceSub 수정(이제 Process_DEV가 아니라 Process테이블을 사용하기 위해)
+Timer_Tick 에서 3 -> 2로
+ProCorrectDataToDB에서
+strUpQry의 PrcEndTime 삭제, _DEV 삭제
+
+한 다음 pi -> mqtt -> 윈폼 -> DB로 업데이트 되는지 확인할 것
+
+// 윈폼 -> monitor로 데이터 전송
+MRPApp에서 EntityFramework.ko 삭제
+M2MQTT 설치
+오류시 정리 -> 다시 빌드
+
+ProcessView 탭 작업
+Newtonsoft.Json 설치
+InitConnectMqttBroker(), MqttClient client 생성
+Timer timer, Stopwatich sw 생성
+
+센서링시 반짝이는 애니메이션 추가 StartSensorAnimation()

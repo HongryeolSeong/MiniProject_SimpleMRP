@@ -1,0 +1,30 @@
+// check_publish_app 추가 작성
+비정상적인 값 받을시(첫 측정 값, 아무것도 없는 경우 측정 값) 처리 과정
+
+// 테스트용 윈폼 DeviceSub 구현
+상위 토픽 구독시 하위 토픽도 다 구독 가능
+
+참조 라이브러리 설치 - Newsonsoft.Json, System.Data.SqlClient, M2Mqtt
+
+서버탐색기를 통해 커넥션스트링 따오기
+
+작성 완료 후 checkapp 실행 및 메세지 확인
+--> 되는 경우가 있고 안되는 경우가 있다. UI스레드와 다른 스레드가 충돌이 일어남
+--> RtbSubscr.AppendText() -> UpdateText()로 바꿔준다.
+
+// check_publish_app 추가 작성
+보내는 메세지의 항목 추가 - param, red, green, blue
+
+// 센싱 후 3초간 아무 센싱이 없을시 마지막 값만 처리
+statusStrip, timer 추가 -> 시간표시
+PrcCorrectDataToDB() 사용
+
+// json message를 C# Dictionary형으로 메시지 변환
+var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+PrcInputDataToList(currentData);
+
+// 테스트 위한 MRP 하위 테스트 테이블 생성
+dbo.Process_DEV
+
+// 디비 입력 처리 메서드 추가 작성
+PrcCorrectDataToDB()

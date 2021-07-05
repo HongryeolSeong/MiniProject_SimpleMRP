@@ -1,0 +1,11 @@
+// 상단 공장정보 표시
+메인윈도우.cs - MetroWindow_Activated 수정
+App.config 수정 - appSettings 추가
+
+// 공장 모니터링 탭 작업
+ProcessView.xaml
+commons.cs에 PLANTCODE 만듦
+캔버스 디자인
+
+// 애니메이션 작업
+BtnStartProcess_Click() 수정
