@@ -1,3 +1,3 @@
 # MRP21
-Project - Material Requirement Program with Raspberry Pi
+Project - MRP(Material Requirement Program) with Raspberry Pi
 
