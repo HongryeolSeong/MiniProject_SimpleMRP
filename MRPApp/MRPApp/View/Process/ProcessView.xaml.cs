@@ -21,7 +21,7 @@ namespace MRPApp.View.Process
     /// 1. 공정계획에서 오늘의 생산계획 일정 불러옴
     /// 2. 없으면 에러표시, 시작버튼을 클릭하지 못하게 만듦
     /// 3. 있으면 오늘의 날짜를 표시, 시작버튼 활성화
-    ///     3-1. MQTT Subscription 연결 factory1/machine1/data 확인
+    ///    3-1. MQTT Subscription 연결 factory1/machine1/data 확인
     /// 4. 시작버튼 클릭시 새 공정 생성, DB에 입력
     ///    공정코드 : PRC20210628001 (PRC+yyyy+MM+dd+NNN)
     /// 5. 공정처리 애니메이션 시작
@@ -135,12 +135,12 @@ namespace MRPApp.View.Process
                 .Where(p => p.PrcResult.Equals(false)).Count();
 
             // 공정 성공률
-            //var prcOkRate = ((double)prcOKAmount / (double)currSchedule.SchAmount) * 100;
-            var prcOkRate = ((double)prcOKAmount / (double)(prcOKAmount + prcFailAmount)) * 100;
+            var prcOkRate = ((double)prcOKAmount / (double)currSchedule.SchAmount) * 100;
+            //var prcOkRate = ((double)prcOKAmount / (double)(prcOKAmount + prcFailAmount)) * 100;
 
             // 공정 실패율
-            //var prcFailRate = ((double)prcFailAmount / (double)currSchedule.SchAmount) * 100;
-            var prcFailRate = ((double)prcFailAmount / (double)(prcOKAmount + prcFailAmount)) * 100;
+            var prcFailRate = ((double)prcFailAmount / (double)currSchedule.SchAmount) * 100;
+            //var prcFailRate = ((double)prcFailAmount / (double)(prcOKAmount + prcFailAmount)) * 100;
 
             LblPrcOkAmount.Content = $"{prcOKAmount} 개";
             LblPrcFailAmount.Content = $"{prcFailAmount} 개";
@@ -172,7 +172,7 @@ namespace MRPApp.View.Process
                 DoubleAnimation ba = new DoubleAnimation();
                 ba.From = 1;    //이미지 보임
                 ba.To = 0;      //이미지 보이지 않음
-                ba.Duration = TimeSpan.FromSeconds(2);
+                ba.Duration = TimeSpan.FromSeconds(0.5);
                 ba.AutoReverse = true;
                 //ba.RepeatBehavior = RepeatBehavior.Forever;
 
