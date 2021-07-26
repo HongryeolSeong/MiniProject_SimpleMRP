@@ -43,7 +43,7 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 ![MQTT](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/mqtt.gif)
 ###### factory1/machine1/data/이라는 Topic에 json 값이 넘어옴을 알 수 있습니다. <br/><br/>
 ###### 3. 해당 Topic을 IoT Device Subsriber에서 Subscribe하여 json 값을 넘겨받은 후 DB에 저장합니다.
-###### IoT Device Subsriber 실행 화면  [IoT Device Subsriber 구동 코드.py 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/DeviceSub/FrmMain.cs)
+###### IoT Device Subsriber 실행 화면  [IoT Device Subsriber 구동 코드.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/DeviceSub/FrmMain.cs)
 ![DeviceSub](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/DeviceSub.gif) <br/><br/>
 ###### 4. MRP에서는 해당 DB값 및 json값을 읽어들여 모니터링을 진행합니다.
 <br/>
