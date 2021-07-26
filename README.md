@@ -35,7 +35,7 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 
 ### 4. 공정 진행[.xaml.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/MRPApp/View/Process/ProcessView.xaml.cs)
 ---
-##### 공정 진행 순서는 다음과 같습니다.
+#### 공정 진행 순서는 다음과 같습니다.
 ###### 1. 컬러감지 센서가 연결된 라즈베리파이로 초록색과 빨간색을 구분합니다(실제 공정 과정으로 가정).
 ![라즈베리파이 회로](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/%ED%9A%8C%EB%A1%9C.gif) <br/><br/>
 ###### 2. 파이썬 코드를 실행하여 색상 구분 결과를 json형식으로 MQTT(Broker)의 Topic으로 Publish합니다.  [라즈베리파이 구동 코드.py 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/pythoncode/check_publish_app.py)
@@ -48,7 +48,7 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 ###### 4. MRP에서는 해당 DB값 및 json값을 읽어들여 모니터링을 진행합니다.
 <br/>
 
-##### 모니터링 순서는 다음과 같습니다.
+#### 모니터링 순서는 다음과 같습니다.
 ###### 1. 공정모니터링 탭 진입 즉시 MQTT와 연결합니다.
 ```C#
 private void InitConnectMqttBroker()
