@@ -56,19 +56,7 @@ namespace MRPApp
         }
 
         #region 이벤트 작업 영역
-        private void BtnSetting_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ActiveControl.Content = new SettingList();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnSetting_Click : {ex}");
-                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
+        // 공정일정탭
         private void BtnSchedule_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,6 +70,7 @@ namespace MRPApp
             }
         }
 
+        // 공정진행 탭
         private void BtnMonitoring_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -95,6 +84,7 @@ namespace MRPApp
             }
         }
 
+        // 공정결과 탭
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -104,6 +94,20 @@ namespace MRPApp
             catch (Exception ex)
             {
                 Commons.LOGGER.Error($"예외발생 BtnReport_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
+        }
+
+        // 공정설정 탭
+        private void BtnSetting_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new SettingList();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnSetting_Click : {ex}");
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
         }
