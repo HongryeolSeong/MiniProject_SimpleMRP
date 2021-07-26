@@ -36,7 +36,7 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 ---
 ###### 컬러감지 센서가 연결된 라즈베리파이를 이용합니다(실제 공정 과정으로 가정).
 회로 사진
-###### 파이썬 코드를 실행하여 색상 구분 결과를 json형식으로 MQTT(Broker)의 한 Topic으로 Publish 합니다.  [라즈베리파이 구동 코드.py 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/pythoncode/check_publish_app.py)
+###### 파이썬 코드를 실행하여 색상 구분 결과를 json형식으로 MQTT(Broker)의 Topic으로 Publish합니다.  [라즈베리파이 구동 코드.py 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/pythoncode/check_publish_app.py)
 ###### MQTT 실행 화면
 ![MQTT](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/mqtt.gif)
 ###### factory1/machine1/data/이라는 Topic에 json 값이 넘어옴을 알 수 있습니다.
