@@ -40,7 +40,9 @@ namespace MRPApp.View.Process
         {
             InitializeComponent();
         }
-        
+
+        #region 이벤트 작업 영역
+        // 공정모니터링 페이지 로드시 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -77,6 +79,27 @@ namespace MRPApp.View.Process
             }
         }
 
+        private void BtnStartProcess_Click(object sender, RoutedEventArgs e)
+        {
+            if (InsertProcessData())
+                StartAnimation(); // HMI 애니메이션 실행
+        }
+
+        // 페이지 닫을시
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // 자원해제
+            //if (client.IsConnected) client.Disconnect();
+            //timer.Dispose();
+            if (client != null) client.Disconnect();
+            if (timer != null)
+            {
+                timer.Dispose();
+            }
+        }
+        #endregion
+
+        #region 이벤트에 사용되는 메서드
         MqttClient client;
         Timer timer = new Timer();
         Stopwatch sw = new Stopwatch();
@@ -180,12 +203,6 @@ namespace MRPApp.View.Process
             }));
         }
 
-        private void BtnStartProcess_Click(object sender, RoutedEventArgs e)
-        {
-            if(InsertProcessData())
-                StartAnimation(); // HMI 애니메이션 실행
-        }
-
         private bool InsertProcessData()
         {
             var item = new Model.Process();
@@ -279,17 +296,7 @@ namespace MRPApp.View.Process
 
             Product.BeginAnimation(Canvas.LeftProperty, ma);
         }
+        #endregion
 
-        private void Page_Unloaded(object sender, RoutedEventArgs e)
-        {
-            // 자원해제
-            //if (client.IsConnected) client.Disconnect();
-            //timer.Dispose();
-            if (client != null) client.Disconnect();
-            if (timer != null)
-            {
-                timer.Dispose();
-            }
-        }
     }
 }
