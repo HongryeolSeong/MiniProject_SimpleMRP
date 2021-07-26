@@ -1,5 +1,6 @@
-# MRP21
+# MRP_2021
 Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
+실제 분류 공정을 관리 및 모니터링 하는 HMI(Human Machine Interface)를 구현하였습니다.
 
 ## 진행 순서
 ### 1. 메인화면[.xaml.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/MRPApp/MainWindow.xaml.cs)
