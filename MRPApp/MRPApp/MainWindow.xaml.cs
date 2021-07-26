@@ -33,7 +33,7 @@ namespace MRPApp
         public MainWindow()
         {
             InitializeComponent();
-        }       
+        }
 
         private void MetroWindow_ContentRendered(object sender, EventArgs e)
         {
@@ -55,16 +55,14 @@ namespace MRPApp
             }
         }
 
-        // 종료 버튼
-        private async void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            var result = await this.ShowMessageAsync("종료", "프로그램을 종료하시겠습니까?",
-                MessageDialogStyle.AffirmativeAndNegative, null);
+        #region 탭 클릭 버튼 이벤트처리
 
-            if (result == MessageDialogResult.Affirmative)
-                Application.Current.Shutdown();
-        }
-
+        /// <summary>
+        /// 공정계획, 공정모니터링, 리포트, 설정 탭 클릭시
+        /// 해당되는 페이지로 연결합니다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSetting_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -115,6 +113,17 @@ namespace MRPApp
                 Commons.LOGGER.Error($"예외발생 BtnReport_Click : {ex}");
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
+        }
+        #endregion
+
+        // 종료 버튼
+        private async void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await this.ShowMessageAsync("종료", "프로그램을 종료하시겠습니까?",
+                MessageDialogStyle.AffirmativeAndNegative, null);
+
+            if (result == MessageDialogResult.Affirmative)
+                Application.Current.Shutdown();
         }
     }
 }
