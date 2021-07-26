@@ -55,14 +55,7 @@ namespace MRPApp
             }
         }
 
-        #region 탭 클릭 버튼 이벤트처리
-
-        /// <summary>
-        /// 공정계획, 공정모니터링, 리포트, 설정 탭 클릭시
-        /// 해당되는 페이지로 연결합니다.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        #region 이벤트 작업 영역
         private void BtnSetting_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -114,7 +107,6 @@ namespace MRPApp
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
         }
-        #endregion
 
         // 종료 버튼
         private async void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -125,5 +117,7 @@ namespace MRPApp
             if (result == MessageDialogResult.Affirmative)
                 Application.Current.Shutdown();
         }
+        #endregion
+
     }
 }
