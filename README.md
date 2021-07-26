@@ -18,6 +18,36 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 ![공정 설정](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/%EC%84%A4%EC%A0%95%EC%9E%85%EB%A0%A5%EB%B0%8F%EC%82%AD%EC%A0%9C.gif)
 ###### - 사용자 입력 오류를 방지하기 위해 유효성 검사 메서드를 이용하여 경고 메세지가 출력되게하였습니다.
 ![오류메시지](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/%EC%84%A4%EC%A0%95_%EC%9E%85%EB%A0%A5%EA%B2%BD%EA%B3%A0.gif)
+###### 해당 코드 👆
+```C#
+public bool IsValidInputs()
+{
+    var isValid = true;
+    InitErrorMessage();
+
+    if (string.IsNullOrEmpty(TxtBasicCode.Text))
+    {
+        LblBasicCode.Visibility = Visibility.Visible;
+        LblBasicCode.Text = "코드를 입력하세요";
+        isValid = false;
+    }
+    else if (Logic.DataAccess.GetSettings().Where(s => s.BasicCode.Equals(TxtBasicCode.Text)).Count() > 0) // 중복 코드 방지
+    {
+        LblBasicCode.Visibility = Visibility.Visible;
+        LblBasicCode.Text = "중복 코드가 존재합니다";
+        isValid = false;
+    }
+
+    if (string.IsNullOrEmpty(TxtCodeName.Text))
+    {
+        LblCodeName.Visibility = Visibility.Visible;
+        LblCodeName.Text = "코드명를 입력하세요";
+        isValid = false;
+    }
+
+    return isValid;
+}
+```
 <br/>
 <br/>
 <br/>
@@ -119,6 +149,6 @@ private void UpdateDate()
 
 ### 5. 공정 결과[.xaml.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/MRPApp/View/Report/ReportView.xaml.cs)
 ---
-###### NuGet 패키지인 LiveCharts를 활용하여 이전 공정 결과를 확인할 수 있습니다.
+###### NuGet 패키지인 LiveCharts를 활용하여 이전 공정 결과를 확인 할 수 있습니다.
 ![공정 결과 리포트](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/Img/%EB%A6%AC%ED%8F%AC%ED%8A%B8.gif)
 <br/>
