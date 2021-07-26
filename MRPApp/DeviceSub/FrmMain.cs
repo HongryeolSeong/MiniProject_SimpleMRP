@@ -34,6 +34,36 @@ namespace DeviceSub
             InitializeAllDate();
         }
 
+        #region 이벤트 작업 영역
+        // 연결: 브로커와 연결된 클라이언트를 이용하여 해당 토픽을 구독한다.
+        private void BtnConnect_Click(object sender, EventArgs e)
+        {
+            client.Connect(TxtClientID.Text);   // SUBSCR01의 이름을 가진 클라이언트로 연결
+            //RtbSubscr.AppendText(">>>> Client Connected\n");
+            UpdateText(">>>> Client Connected" + "\n");
+            client.Subscribe(new string[] { TxtSubcriptionTopic.Text },
+                new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE }); // enum이고 0의 값을 가진다.
+            //RtbSubscr.AppendText(">>>> Subscribing to : " + TxtSubcriptionTopic.Text + "\n");
+            UpdateText(">>>> Subscribing to : " + TxtSubcriptionTopic.Text + "\n");
+
+            BtnConnect.Enabled = false;
+            BtnDisconnect.Enabled = true;
+        }
+
+        // 연결 해제: 클라이언트와 브로커를 연결 해제한다.
+        private void BtnDisconnect_Click(object sender, EventArgs e)
+        {
+            client.Disconnect();
+            //RtbSubscr.AppendText(">>>> client Disconnected.\n");
+            UpdateText(">>>> client Disconnected.\n");
+
+            BtnConnect.Enabled = true;
+            BtnDisconnect.Enabled = false;
+        }
+        #endregion
+
+        #region 이벤트에 사용되는 메서드
+        // 폼 로드시 초기화
         private void InitializeAllDate()
         {
             connectionString = "Data Source=" + TxtConnectionString.Text + ";Initial Catalog=MRP;" +
@@ -77,7 +107,31 @@ namespace DeviceSub
             }
         }
 
-        // 여러 데이터 중 최종 데이터만 DB에 입력처리 메서드
+        private void Client_MqttMsgPublishReceived(object sender, uPLibrary.Networking.M2Mqtt.Messages.MqttMsgPublishEventArgs e)
+        {
+            try
+            {
+                var message = Encoding.UTF8.GetString(e.Message);
+                //RtbSubscr.AppendText($">>>> 받은 메세지 : {message}");
+                UpdateText($">>>> 받은 메세지 : {message}");
+
+                // message(json) > C#
+                var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+                PrcInputDataToList(currentData);
+
+                // 0, 1, 2, 3, stop, 0, 1, 2, 3 ...
+                sw.Stop();
+                sw.Reset();
+                sw.Start();
+            }
+            catch (Exception ex)
+            {
+                //RtbSubscr.AppendText($">>>> ERROR! : {ex.Message}");
+                UpdateText($">>>> ERROR! : {ex.Message}");
+            }
+        }
+
+        // 여러 데이터 중 최종 데이터만 DB에 입력처리하는 메서드
         private void PrcCorrectDataToDB()
         {
             if (iotData.Count > 0)
@@ -114,31 +168,7 @@ namespace DeviceSub
             iotData.Clear(); // 데이터 모두 삭제
         }
 
-        private void Client_MqttMsgPublishReceived(object sender, uPLibrary.Networking.M2Mqtt.Messages.MqttMsgPublishEventArgs e)
-        {
-            try
-            {
-                var message = Encoding.UTF8.GetString(e.Message);
-                //RtbSubscr.AppendText($">>>> 받은 메세지 : {message}");
-                UpdateText($">>>> 받은 메세지 : {message}");
-
-                // message(json) > C#
-                var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
-                PrcInputDataToList(currentData);
-
-                // 0, 1, 2, 3, stop, 0, 1, 2, 3 ...
-                sw.Stop();
-                sw.Reset();
-                sw.Start();
-            }
-            catch (Exception ex)
-            {
-                //RtbSubscr.AppendText($">>>> ERROR! : {ex.Message}");
-                UpdateText($">>>> ERROR! : {ex.Message}");
-            }
-        }
-
-        // 2개 이상 dictionary 받기 위해
+        // 2개 이상 dictionary 받기 위한 List 선언
         List<Dictionary<string, string>> iotData = new List<Dictionary<string, string>>();
 
         // 라즈베리파이에서 들어온 메시지를 전역리스트에 입력하는 메서드
@@ -148,29 +178,6 @@ namespace DeviceSub
                 iotData.Add(currentData);
         }
 
-        private void BtnConnect_Click(object sender, EventArgs e)
-        {
-            client.Connect(TxtClientID.Text);   // SUBSCR01의 이름을 가진 클라이언트로 연결
-            //RtbSubscr.AppendText(">>>> Client Connected\n");
-            UpdateText(">>>> Client Connected" + "\n");
-            client.Subscribe(new string[] { TxtSubcriptionTopic.Text },
-                new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE }); // enum이고 0의 값을 가진다.
-            //RtbSubscr.AppendText(">>>> Subscribing to : " + TxtSubcriptionTopic.Text + "\n");
-            UpdateText(">>>> Subscribing to : " + TxtSubcriptionTopic.Text + "\n");
-
-            BtnConnect.Enabled = false;
-            BtnDisconnect.Enabled = true;
-        }
-
-        private void BtnDisconnect_Click(object sender, EventArgs e)
-        {
-            client.Disconnect();
-            //RtbSubscr.AppendText(">>>> client Disconnected.\n");
-            UpdateText(">>>> client Disconnected.\n");
-
-            BtnConnect.Enabled = true;
-            BtnDisconnect.Enabled = false;
-        }
 
         // RtbSubscr.AppendTest() 대체
         private void UpdateText(string message) // 대리자와 파라미터가 같아야한다.
@@ -188,5 +195,7 @@ namespace DeviceSub
                 RtbSubscr.ScrollToCaret(); // 메세지가 쌓일 경우 제일 밑으로 내려준다.
             }
         }
+        #endregion
+
     }
 }
