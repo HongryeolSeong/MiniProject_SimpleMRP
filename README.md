@@ -46,7 +46,7 @@ Project - MRP(Material Requirement Program) with Raspberry Pi<br/>
 
 ###### 공정 진행 순서는 다음과 같습니다.
 ###### 1. 공정모니터링 진입시 MQTT와 연결합니다.
-###### 2. 시작 버튼을 눌러 애니메이션을 실행시킨 후 라즈베리파이로 색상 구분 진행
+###### 2. 시작 버튼을 눌러 애니메이션을 실행시킨 후 라즈베리파이로 색상 구분 진행([라즈베리파이 구동 코드.py](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/pythoncode/check_publish_app.py) 실행)
 ###### 3. MRP는 색상 구분 결과(Green = 'OK', Red = 'FAIL')를 데이터베이스에 입력
 ###### 4. MRP는 데이터베이스에서 데이터를 불러와 성공/실패수량 및 성공/실패율을 화면에 출력
 
