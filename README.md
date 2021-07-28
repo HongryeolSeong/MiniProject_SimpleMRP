@@ -1,5 +1,5 @@
 # MES_2021
-Project - MES (Manufacturing Execution System) with Raspberry Pi<br/>
+Project - MES(Manufacturing Execution System) with Raspberry Pi<br/>
 실제 분류 공정을 관리 및 모니터링 하는 HMI(Human Machine Interface)를 구현하였습니다.
 
 ## 진행 순서
