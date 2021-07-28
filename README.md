@@ -3,7 +3,7 @@ Project - MES(Manufacturing Execution System) with Raspberry Pi<br/>
 실제 분류 공정을 관리 및 모니터링 하는 HMI(Human Machine Interface)를 구현하였습니다.
 
 ## 진행 순서
-### 1. 메인화면[.xaml.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/MRPApp/MainWindow.xaml.cs)
+### 1. 메인 화면[.xaml.cs 👈 ](https://github.com/HongryeolSeong/MiniProject_SimpleMRP/blob/main/MRPApp/MRPApp/MainWindow.xaml.cs)
 ---
 ###### - Visual Studio를 사용하여 WPF기반으로 구현하였습니다.<br/>
 ###### - 선택 가능한 메뉴는 공정계획 / 공정모니터링 / 리포트 / 설정 / 종료가 있습니다.
